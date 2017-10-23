@@ -20,4 +20,11 @@ describe "validations" do
       expect(category).to be_valid
     end
   end
+
+  describe "relationships" do
+    it "has many gifs" do
+      category = Category.create(name: "Kittens")
+      expect(category).to respond_to(:gifs)
+    end
+  end
 end

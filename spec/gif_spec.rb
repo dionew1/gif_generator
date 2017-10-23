@@ -28,4 +28,22 @@ describe "validations" do
       expect(gif).to be_valid
     end
   end
+
+  describe "relationships" do
+    it "belongs to category" do
+      category = Category.create(name: "Puppy")
+      gif = category.gifs.create(url: "https://media1.giphy.com/media/830eOTPrd8bGU/giphy.gif")
+      expect(gif).to respond_to(:category)
+    end
+    it "has many favorites" do
+      category = Category.create(name: "Puppy")
+      gif = category.gifs.create(url: "https://media1.giphy.com/media/830eOTPrd8bGU/giphy.gif")
+      expect(gif).to respond_to(:favorites)
+    end
+    it "has many users" do
+      category = Category.create(name: "Puppy")
+      gif = category.gifs.create(url: "https://media1.giphy.com/media/830eOTPrd8bGU/giphy.gif")
+      expect(gif).to respond_to(:users)
+    end
+  end
 end

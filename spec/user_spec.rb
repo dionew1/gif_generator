@@ -24,4 +24,15 @@ require 'rails_helper'
         expect(user).to be_valid
       end
     end
+
+    describe "relationships" do
+      it "has favorites" do
+        user = User.create(username: "jane123", password: "test123")
+        expect(user).to respond_to(:favorites)
+      end
+      it "has gifs" do
+        user = User.create(username: "jane123", password: "test123")
+        expect(user).to respond_to(:gifs)
+      end
+    end
   end
