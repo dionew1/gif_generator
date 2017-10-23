@@ -17,7 +17,8 @@ require 'rails_helper'
         expect(user).to be_invalid
       end
     end
-    describe "valide attributes" do
+
+    describe "valid attributes" do
       it "is valid with valid attributes" do
         user = User.create(username: "jane123", password: "test123")
         expect(user).to be_valid
