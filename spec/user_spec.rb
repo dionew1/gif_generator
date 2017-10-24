@@ -1,4 +1,5 @@
 require 'rails_helper'
+describe User do
   describe "validation" do
     describe "invalid attributes" do
       it "is invalid without a password" do
@@ -24,15 +25,31 @@ require 'rails_helper'
         expect(user).to be_valid
       end
     end
+  end
 
-    describe "relationships" do
-      it "has favorites" do
-        user = User.create(username: "jane123", password: "test123")
-        expect(user).to respond_to(:favorites)
-      end
-      it "has gifs" do
-        user = User.create(username: "jane123", password: "test123")
-        expect(user).to respond_to(:gifs)
-      end
+  describe "relationships" do
+    it "has favorites" do
+      user = User.create(username: "jane123", password: "test123")
+      expect(user).to respond_to(:favorites)
+    end
+
+    it "has gifs" do
+      user = User.create(username: "jane123", password: "test123")
+      expect(user).to respond_to(:gifs)
     end
   end
+
+  describe "role" do
+    it "has default of default user" do
+      user = User.create(username: "jane123", password: "test123")
+      expect(user.role).to eq "default"
+      expect(user.default?).to be_truthy
+    end
+
+    it "can have role of admin" do
+      user = User.create(username: "jane123", password: "test123", role: 1)
+      expect(user.role).to eq "admin"
+      expect(user.admin?).to be_truthy
+    end
+  end
+end
