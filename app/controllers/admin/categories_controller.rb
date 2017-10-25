@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :downcase_params, only: :create
   def new
     @category = Category.new
   end
@@ -10,11 +11,15 @@ class Admin::CategoriesController < ApplicationController
       @category = Category.create(category_params)
     end
     @category.gifs.create(url: json_gif["data"]["image_url"])
-    redirect_to admin_gifs_path(:admin)
+    redirect_to admin_gifs_path
   end
 
   private
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def downcase_params
+      category_params[:name].downcase!
     end
 end
