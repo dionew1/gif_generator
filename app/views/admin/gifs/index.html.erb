@@ -1,0 +1,4 @@
+<h2>Gifs</h2>
+<% @gifs.sort_by_category.each do |gif| %>
+  <img src="<%=gif.url %>"/>
+<% end %>
