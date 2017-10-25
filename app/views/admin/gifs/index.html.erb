@@ -1,4 +1,10 @@
 <h2>Gifs</h2>
+<% if flash[:delete] %>
+  <p class="delete"><%= flash[:delete] %></p>
+<% end %>
 <% @gifs.sort_by_category.each do |gif| %>
-  <img src="<%=gif.url %>"/>
+  <div class="images">
+    <img src="<%=gif.url %>"/>
+    <%= button_to "Delete", admin_gif_path(gif), method: "delete" %>
+  </div>
 <% end %>
