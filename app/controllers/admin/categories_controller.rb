@@ -14,6 +14,7 @@ class Admin::CategoriesController < ApplicationController
     redirect_to admin_gifs_path
   end
 
+
   private
     def category_params
       params.require(:category).permit(:name)
