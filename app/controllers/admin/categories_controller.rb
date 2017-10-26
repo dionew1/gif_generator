@@ -1,5 +1,6 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::BaseController
   before_action :downcase_params, only: :create
+
   def new
     @category = Category.new
   end
