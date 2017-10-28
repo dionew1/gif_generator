@@ -9,7 +9,8 @@ describe "validations" do
 
     it "is invalid without a url" do
       category = Category.create(name: "Puppy")
-      gif = category.gifs.create
+      category.gifs.create
+
       expect(category).to be_invalid
     end
 
