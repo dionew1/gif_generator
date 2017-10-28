@@ -1,7 +1,13 @@
 <h2>Gifs</h2>
-<% @gifs.sort_by_category.each do |gif| %>
+
+<p><%= link_to "Sort by Category", admin_gifs_path(sort: "category") %></p>
+
+<% @gifs.each do |gif| %>
   <div class="images">
-    <img src="<%=gif.url %>"/>
+    <div class = "gif-title">
+      <%= gif.category.name.capitalize %>
+    </div>
+    <img src="<%= gif.url %>"/>
     <%= button_to "Delete", admin_gif_path(gif), method: "delete" %>
   </div>
 <% end %>
