@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#index"
   resources :users, only: [:new, :create, :show]
+  resources :gifs, only: [:index]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

@@ -21,8 +21,8 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     @category = Category.find(params[:id])
-    flash[:delete] = "#{@category.name.capitalize} has been deleted with all gifs." 
-    @category.delete
+    flash[:delete] = "#{@category.name.capitalize} has been deleted with all gifs."
+    @category.destroy
     redirect_to admin_categories_path
   end
 
