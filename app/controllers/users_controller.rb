@@ -26,7 +26,6 @@ class UsersController < ApplicationController
     end
 
     def logged_in?
-
       render_404 unless current_user
     end
 end

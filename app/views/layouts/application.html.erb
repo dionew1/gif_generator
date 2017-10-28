@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <nav>
+      <div>
+        <%=link_to "Log Out", logout_path, method: :delete %>
+      </div>
+    </nav>
     <%= yield %>
+    <% flash.each do |type, message| %>
+    <%= content_tag :div, message, class: "alert alert#{type}" %>
+    <% end %>
   </body>
 </html>

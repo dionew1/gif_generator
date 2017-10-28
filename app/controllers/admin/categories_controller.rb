@@ -1,6 +1,10 @@
 class Admin::CategoriesController < Admin::BaseController
   before_action :downcase_params, only: :create
 
+  def index
+    @categories = Category.all
+  end
+#
   def new
     @category = Category.new
   end
@@ -13,6 +17,13 @@ class Admin::CategoriesController < Admin::BaseController
     end
     @category.gifs.create(url: json_gif["data"]["image_url"])
     redirect_to admin_gifs_path
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    flash[:delete] = "#{@category.name.capitalize} has been deleted" 
+    @category.delete
+    redirect_to admin_categories_path
   end
 
   private

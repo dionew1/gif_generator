@@ -1,7 +1,4 @@
 <h2>Gifs</h2>
-<% if flash[:delete] %>
-  <p class="delete"><%= flash[:delete] %></p>
-<% end %>
 <% @gifs.sort_by_category.each do |gif| %>
   <div class="images">
     <img src="<%=gif.url %>"/>
