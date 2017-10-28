@@ -25,4 +25,16 @@ describe "Admin can delete" do
     expect(Category.count).to eq 0
     expect(page).to have_content("Puppy has been deleted with all gifs.")
   end
+
+  scenario "Admin can delete all gifs associated to category" do
+    admin = User.create(username: "jane123", password: "password123", role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    category = Category.create(name: "Puppy")
+    category.gifs.create(url: "https://media2.giphy.com/media/l2SpQernPGHqVcjgA/giphy.gif")
+
+    visit admin_categories_path
+
+    click_on "Delete"
+    expect(Gif.count).to eq 0
+  end
 end

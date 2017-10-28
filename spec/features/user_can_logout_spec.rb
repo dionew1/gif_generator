@@ -5,7 +5,7 @@ describe "User can logout" do
     user = User.create(username: "user123", password: "password123")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit user_path(user)
+    visit favorites_path
 
     click_on "Log Out"
 

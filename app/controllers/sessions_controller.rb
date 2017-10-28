@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:sessions][:username])
     if user && user.authenticate(params[:sessions][:password])
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      redirect_to favorites_path
     else
       flash[:failure] = "Incorrect Log In"
       render :new

@@ -19,9 +19,9 @@ describe "Visitor can see home" do
     expect(page).to have_content "Please Log In"
   end
 
-  scenario "vistor cannot see user show page" do
-    user = User.create(username: "jane123", password: "password123")
-    visit user_path(user)
+  scenario "vistor cannot see favorites page" do
+    User.create(username: "jane123", password: "password123")
+    visit favorites_path
 
     expect(status_code).to eq 404
   end

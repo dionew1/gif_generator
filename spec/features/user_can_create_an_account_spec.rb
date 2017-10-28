@@ -9,6 +9,6 @@ describe "User can create an account" do
 
     click_on "Create Account"
 
-    expect(page).to have_content("Hello #{User.last.username}")
+    expect(current_path).to eq gifs_path
   end
 end
