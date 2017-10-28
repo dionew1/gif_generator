@@ -3,8 +3,8 @@ class FavoritesController < ApplicationController
 
   def index
     user = current_user
-    @favorites = Favorite.find_by(user_id: user.id)
-    if @favorites == nil
+    @favorites = Favorite.where(user_id: user.id).sort_by_category
+    if @favorites.empty?
       flash[:empty] = "You currently have no favorites"
       redirect_to gifs_path
     else
@@ -13,7 +13,20 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = Favorite.new
+    @favorite = Favorite.new(user_id: current_user.id, gif_id:params[:gif_id])
+    if @favorite.save
+      flash[:save] = "Your favorite has been saved"
+    else
+      flash[:error] = "Something went wrong, please try again"
+    end
+    redirect_to gifs_path
+  end
+
+  def destroy
+    favorite = Favorite.find(params[:id])
+    flash[:unfavorite] = "Successfully Unfavorited"
+    favorite.destroy
+    redirect_to favorites_path
   end
 
   private
