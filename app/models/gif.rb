@@ -9,7 +9,7 @@ class Gif < ApplicationRecord
   has_many :users, through: :favorites
 
   def self.retrieve_gif(category)
-    key = open('app/assets/.api_key').read()
+    key = ENV['giphy_key']
     url = "https://api.giphy.com/v1/gifs/random?api_key=#{key}&tag=#{category}&rating=G"
     resp = Net::HTTP.get_response(URI.parse(url))
     buffer = resp.body
