@@ -19,7 +19,7 @@ describe "User can visit login" do
     click_on "Log In"
 
     expect(current_path).to eq favorites_path
-    expect(page).to have_content("fun123's Favorites")
+    expect(page).to have_content("Fun123's Favorites")
   end
 
   scenario "user denied login" do

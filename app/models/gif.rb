@@ -14,7 +14,12 @@ class Gif < ApplicationRecord
     resp = Net::HTTP.get_response(URI.parse(url))
     buffer = resp.body
     result = JSON.parse(buffer)
-    result
+    if Gif.find_by(url: result["data"]["image_url"])
+      byebug
+      self.retrieve_gif(category)
+    else
+      result
+    end
   end
 
   def self.sort_by_category

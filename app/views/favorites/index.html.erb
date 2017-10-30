@@ -1,4 +1,4 @@
-<h3><%= current_user.username %>'s  Favorites</h3>
+<h3><%= current_user.username.capitalize %>'s  Favorites</h3>
 
 <% @favorites.each do |favorite| %>
   <% gif = favorite.gif %>

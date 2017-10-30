@@ -1,11 +1,15 @@
 require 'rails_helper'
 
-describe "User can logout" do
-  scenario "user can log out from show page" do
+describe "User can log out" do
+  scenario "user can log out from page" do
     user = User.create(username: "user123", password: "password123")
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit favorites_path
+    visit login_path
+
+    fill_in "sessions[username]", with: "user123"
+    fill_in "sessions[password]", with: "password123"
+
+    click_on "Log In"
 
     click_on "Log Out"
 

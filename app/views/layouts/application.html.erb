@@ -9,13 +9,16 @@
   </head>
 
   <body>
-    <nav>
-      <div>
-        <%=link_to "Log Out", logout_path, method: :delete %>
-      </div>
-    </nav>
+    <% if current_user %>
+      <nav>
+        <div>
+          <%=link_to "Log Out", logout_path, method: :delete %>
+        </div>
+      </nav>
+    <% end %>
     <% flash.each do |type, message| %>
-    <%= content_tag :div, message, class: "alert alert#{type}" %>
+      <%= content_tag :div, message, class: "alert alert#{type}" %>
+      <% flash.discard(type) %>
     <% end %>
     <%= yield %>
   </body>
