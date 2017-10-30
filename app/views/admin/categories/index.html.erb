@@ -1,7 +1,9 @@
 <h2>Existing Categories</h2>
 
 <% @categories.each do |category| %>
-  <h4><%= category.name.capitalize %> </h4>
-  <p> Gif Total: <%= category.gif_count %> </p>
-  <%= button_to "Delete", admin_category_path(category), method: "delete" %>
+  <div class="category">
+    <h4><%= category.name.capitalize %> </h4>
+    <p> Gif Total: <%= category.gif_count %> </p>
+    <%= button_to "Delete", admin_category_path(category), method: "delete" %>
+  </div>
 <% end %>

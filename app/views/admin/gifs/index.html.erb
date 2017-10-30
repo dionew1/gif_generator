@@ -7,5 +7,17 @@
     </div>
     <img src="<%= gif.url %>"/>
     <%= button_to "Delete", admin_gif_path(gif), method: "delete" %>
+    <% if gif.favorites.where(user_id: current_user.id).find_by(gif_id: gif.id) %>
+      <%= button_to "Add to Favorites", favorites_path(gif_id: gif.id), disabled: true %>
+    <% else %>
+      <%= button_to "Add to Favorites", favorites_path(gif_id: gif.id), onclick: 'return disable(this)' %>
+    <% end %>
   </div>
 <% end %>
+
+<script>
+  function disable(element) {
+    element.disabled = true;
+    element.parentElement.submit();
+  }
+</script>

@@ -19,7 +19,7 @@ class FavoritesController < ApplicationController
     else
       flash[:error] = "Something went wrong, please try again"
     end
-    redirect_to gifs_path
+      direct_to_gifs
   end
 
   def destroy
@@ -32,5 +32,13 @@ class FavoritesController < ApplicationController
   private
     def logged_in?
       render_404 unless current_user
+    end
+
+    def direct_to_gifs
+      if admin?
+        redirect_to admin_gifs_path
+      else
+        redirect_to gifs_path
+      end
     end
 end
