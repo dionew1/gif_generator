@@ -27,4 +27,15 @@ describe "validations" do
       expect(category).to respond_to(:gifs)
     end
   end
+
+  describe "instance methods" do
+    it "can have gif count" do
+      category = Category.create(name: "Puppy")
+      category.gifs.create(url: "https://media1.giphy.com/media/830eOTPrd8bGU/giphy.gif")
+
+      count = category.gif_count
+
+      expect(count).to eq 1
+    end
+  end
 end

@@ -12,6 +12,10 @@
     <% if current_user %>
       <nav>
         <div>
+          <%=link_to "Favorites", favorites_path %>
+          <%=link_to "Gifs", gifs_path %>
+        </div>
+        <div>
           <%=link_to "Log Out", logout_path, method: :delete %>
         </div>
       </nav>

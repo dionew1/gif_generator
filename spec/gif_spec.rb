@@ -47,4 +47,25 @@ describe "validations" do
       expect(gif).to respond_to(:users)
     end
   end
+
+  describe "class methods" do
+    it "can sort by category" do
+      category1 = Category.create(name: "Puppy")
+      category1.gifs.create(url: "https://media1.giphy.com/media/830eOTPrd8bGU/giphy.gif")
+      category2 = Category.create(name: "Pizza")
+      category2.gifs.create(url: "https://media1.giphy.com/media/xUA7aUV0jm1xc8TUS4/giphy.gif")
+
+      sort = Gif.sort_by_category
+
+      expect(sort.first.category.name).to eq(category2.name)
+      expect(sort.last.category.name).to eq(category1.name)
+    end
+
+    it "can retrieve gif" do
+      category = Category.create(name: "Puppy")
+      gif = Gif.retrieve_gif(category.name)
+
+      expect(gif).not_to be_nil
+    end
+  end
 end
