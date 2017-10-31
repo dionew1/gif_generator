@@ -1,35 +1,31 @@
 # README
 
-Project Option 2: GifGenerator
+<h2>Gif Generator</h2>
+App deployed on heroku: [gif-g](https://gif-g.herokuapp.com/)
 
-Create an app where users can “favorite” gifs.
+This app was created with:
+<br>Ruby version 2.4.1
+<br>Rails 5.1.4
+<br>API key from Giphy API(You will need to supply your own key)
 
-Gifs
+<h4>Getting Started</h4>
+Run the following terminal commands:
+1. `git clone`
+2. `bundle`
+3. `rake db:create db:migrate`
+4. `rails s`
 
-Admins can generate gifs by entering a one-word search term in field and then clicking “generate gif”. This should create a new gif in the database. This feature is not available to regular users.
-Gifs should have an image_path. See above “Images” in project #1 for more info on implementing images.
-Use the GiphyApi to generate gifs.
-Favoriting
+Now that your local server is running you can open the app in your browser from `localhost:portnumber`
+This should bring you to the welcome page.
 
-Regular users can mark a gif as “favorite”.
-Regular users can see a list of all of the gifs they’ve marked as favorites.
-Regular users cannot delete a gif; they can only “unfavorite” it for themselves.
-Regular users should be able to see all gifs sorted by category.
-Regular users should be able to see favorited gifs sorted by category.
-Categories
 
-Gifs belong to a category (category is the original word that was searched for by the admin).
-categories can be created and destroyed by a logged-in admin user (regular logged in users cannot create or destroy categories)
-Authentication and Authorization
+<h4>Purpose</h4>
+The purpose of this app is for a user to be able to favorite and unfavorite gifs that are created by the admin.
 
-users need to log in to see their favorited gifs
-users can only see their own favorited gifs – they should not be able to visit another user’s page
-users cannot create favorites for other users
-users cannot create new categories – only the admin can do that
-users cannot create gifs – only the admin can do that
-visitors (non-registered users) can create user accounts
-Optional Extensions
+An admin user can randomly create gifs using the Giphy API. Admins create a category via the search term entered to generate the gif. They are also able to delete a single gif or category with all gifs associated to it.
 
-Implement Twitter, Github, or Facebook OAuth login
-Use HAML for your views
-TDD using RSpec instead of Test::Unit
+<h4>Creating an Admin</h4>
+To create an admin locally:
+  1. Run `rails c` from terminal
+  2. Input `User.create(username: "YOUR TEXT", password: "YOUR TEXT", role: 1)`
+  3. You are now able to login using the admin user you have just created.
