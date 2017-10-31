@@ -1,8 +1,7 @@
 # README
 
-<h2>Gif Generator</h2>
-App deployed on heroku:
-[gif-g](https://gif-g.herokuapp.com/)
+**Gif Generator**
+App deployed on heroku [gif-g](https://gif-g.herokuapp.com/)
 
 This app was created with:
 <br>Ruby version 2.4.1
