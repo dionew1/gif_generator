@@ -1,6 +1,7 @@
 # README
 
 **Gif Generator**
+
 App deployed on heroku [gif-g](https://gif-g.herokuapp.com/)
 
 This app was created with:
@@ -9,6 +10,7 @@ This app was created with:
 * API key from Giphy API(You will need to supply your own key)
 
 ****Getting Started****
+
 Run the following terminal commands:
 1. `git clone`
 2. `bundle`
@@ -20,11 +22,13 @@ This should bring you to the welcome page.
 
 
 ****Purpose****
+
 The purpose of this app is for a user to be able to favorite and unfavorite gifs that are created by the admin.
 
 An admin user can randomly create gifs using the Giphy API. Admins create a category via the search term entered to generate the gif. They are also able to delete a single gif or category with all gifs associated to it.
 
 ****Creating an Admin****
+
 To create an admin locally:
 1. Run `rails c` from terminal
 2. Input `User.create(username: "YOUR TEXT", password: "YOUR TEXT", role: 1)`
