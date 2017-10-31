@@ -4,9 +4,9 @@
 App deployed on heroku [gif-g](https://gif-g.herokuapp.com/)
 
 This app was created with:
-*Ruby version 2.4.1
-*Rails 5.1.4
-*API key from Giphy API(You will need to supply your own key)
+* Ruby version 2.4.1
+* Rails 5.1.4
+* API key from Giphy API(You will need to supply your own key)
 
 ****Getting Started****
 Run the following terminal commands:
